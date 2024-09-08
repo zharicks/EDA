@@ -1354,12 +1354,12 @@ co-applicant_age                              object
 submission_of_application                   category
 initially_payable_to_institution            category
 ffiec_msa_md_median_family_income              int64
-aus_GUS                                        int64
-aus_DU                                         int64
-aus_TOTAL                                      int64
-aus_Other                                      int64
 aus_IPS                                        int64
 aus_LP                                         int64
+aus_DU                                         int64
+aus_GUS                                        int64
+aus_Other                                      int64
+aus_TOTAL                                      int64
 debt_to_income_ratio_cat                      object
 dtype: object
 </pre></div>
@@ -1966,42 +1966,42 @@ Name: count, dtype: int64
     </tr>
     <tr>
       <th>48</th>
-      <td>aus_GUS</td>
-      <td>Mann-Whitney</td>
-      <td>0.0</td>
-      <td>Sí</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>aus_DU</td>
-      <td>Mann-Whitney</td>
-      <td>0.0</td>
-      <td>Sí</td>
-    </tr>
-    <tr>
-      <th>50</th>
-      <td>aus_TOTAL</td>
-      <td>Mann-Whitney</td>
-      <td>0.0</td>
-      <td>Sí</td>
-    </tr>
-    <tr>
-      <th>51</th>
-      <td>aus_Other</td>
-      <td>Mann-Whitney</td>
-      <td>0.0</td>
-      <td>Sí</td>
-    </tr>
-    <tr>
-      <th>52</th>
       <td>aus_IPS</td>
       <td>Mann-Whitney</td>
       <td>0.0</td>
       <td>Sí</td>
     </tr>
     <tr>
-      <th>53</th>
+      <th>49</th>
       <td>aus_LP</td>
+      <td>Mann-Whitney</td>
+      <td>0.0</td>
+      <td>Sí</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>aus_DU</td>
+      <td>Mann-Whitney</td>
+      <td>0.0</td>
+      <td>Sí</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>aus_GUS</td>
+      <td>Mann-Whitney</td>
+      <td>0.0</td>
+      <td>Sí</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>aus_Other</td>
+      <td>Mann-Whitney</td>
+      <td>0.0</td>
+      <td>Sí</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>aus_TOTAL</td>
       <td>Mann-Whitney</td>
       <td>0.0</td>
       <td>Sí</td>
@@ -2191,11 +2191,12 @@ Name: count, dtype: int64
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">MissingData</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#08306b&#39;</span><span class="p">,</span> <span class="s1">&#39;#c6dbef&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span> 
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porcentaje de Valores Faltantes por Variable&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Variables del Dataset&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Porcentaje de Valores&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porcentaje de Valores Faltantes por Variable&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Variables del Dataset&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Porcentaje de Valores&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Faltante&#39;</span><span class="p">,</span> <span class="s1">&#39;No Faltante&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -2205,7 +2206,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2f75bf55bf9f5d904a5bb69af780ff8e70144a763d946ef9e82509599670a772.png" src="_images/2f75bf55bf9f5d904a5bb69af780ff8e70144a763d946ef9e82509599670a772.png" />
+<img alt="_images/82913caf8f670623da9cb90c600cdc3e9c395c7f961a82a41de5acd94b3ae355.png" src="_images/82913caf8f670623da9cb90c600cdc3e9c395c7f961a82a41de5acd94b3ae355.png" />
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2365,26 +2366,32 @@ Name: income, dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
+<span class="c1"># Histograma de &#39;income&#39; antes de la imputación</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Dataset</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#0096c7&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#0096c7&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución de Income antes de la Imputación&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income (en miles de dólares)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Dataset</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#0096c7&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución antes de la Imputación&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Ingresos (en miles de dólares)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
 
-<span class="c1"># Visualización después de la imputación</span>
+<span class="c1"># Histograma de &#39;income&#39; después de la imputación</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Dataset</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución de Income después de la Imputación&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income (en miles de dólares)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Dataset</span><span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;#0d1b2a&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribución después de la Imputación&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Ingresos (en miles de dólares)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/152fe3cc25ff2d43a4b46e7c5afcba9f194f725a1b11efcad1cd5139eede423a.png" src="_images/152fe3cc25ff2d43a4b46e7c5afcba9f194f725a1b11efcad1cd5139eede423a.png" />
+<img alt="_images/28bda6050b9d844013ef76fae90ff012f9fd4a02706f1ac6a48c28c85a1e00f7.png" src="_images/28bda6050b9d844013ef76fae90ff012f9fd4a02706f1ac6a48c28c85a1e00f7.png" />
 </div>
 </div>
 <p>En esta gráfica de distribución de la variable “Income” antes y después de la imputación, podemos observar que ambas distribuciones parecen extremadamente concentradas en un rango muy estrecho. Este comportamiento puede deberse a la presencia de valores atípicos (outliers) que están distorsionando la visualización.</p>
@@ -2443,27 +2450,30 @@ Porcentaje de valores faltantes en &#39;conforming_loan_limit&#39;: 0.22%
 
 <span class="c1"># Distribución antes de la imputación </span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;conforming_loan_limit&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Dataset</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;conforming_loan_limit&#39;</span><span class="p">]),</span> <span class="n">palette</span> <span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribución de &#39;conforming_loan_limit&#39; antes de la Imputación&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Conforming Loan Limit&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frecuencia&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;conforming_loan_limit&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Dataset</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;conforming_loan_limit&#39;</span><span class="p">]),</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#0096c7&#39;</span><span class="p">,</span> <span class="s1">&#39;#023e8a&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribución antes de la Imputación&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Conforming Loan Limit&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
 
 <span class="c1"># Distribución después de la imputación</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;conforming_loan_limit&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribución de &#39;conforming_loan_limit&#39; después de la Imputación&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Conforming Loan Limit&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frecuencia&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;conforming_loan_limit&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#0096c7&#39;</span><span class="p">,</span> <span class="s1">&#39;#023e8a&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribución  después de la Imputación&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Conforming Loan Limit&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frecuencia&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f46f8e18ce85e12f03046dab49db12fdf8e74f053200fe401fc32997c0a0ee3e.png" src="_images/f46f8e18ce85e12f03046dab49db12fdf8e74f053200fe401fc32997c0a0ee3e.png" />
+<img alt="_images/87c02f3b0adb4e1910c881c2c86bf4be19e74890330e6da845e4c2c0d53ff120.png" src="_images/87c02f3b0adb4e1910c881c2c86bf4be19e74890330e6da845e4c2c0d53ff120.png" />
 </div>
 </div>
 <p>La distribución de la variable antes de la imputación muestra que la gran mayoría de los valores son “C” (Conforming), mientras que una pequeña proporción corresponde a “NC” (Nonconforming). Esta distribución se basa solo en los datos disponibles, ya que los valores faltantes no se incluyen en esta representación. La categoría “C” es claramente dominante en el dataset. Luego de la imputación con la moda, que es “C”, todos los valores faltantes han sido reemplazados por la categoría “C”. Como resultado, la gráfica muestra un aumento en la frecuencia de la categoría “C” después de la imputación, mientras que la frecuencia de la categoría “NC” permanece prácticamente sin cambios. Este aumento se debe a la adición de los valores faltantes como “C”, lo que no altera de manera significativa la distribución general de los datos, dado que “C” ya era la categoría dominante.</p>
@@ -2484,19 +2494,26 @@ Porcentaje de valores faltantes en &#39;conforming_loan_limit&#39;: 0.22%
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NumVars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">,</span> <span class="s1">&#39;loan_amount&#39;</span><span class="p">,</span> <span class="s1">&#39;ffiec_median_family_income&#39;</span><span class="p">]</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">NumVars</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Dataset</span><span class="p">[</span><span class="n">var</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span> <span class="s2">&quot;#023e8a&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Boxplot de </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Dataset</span><span class="p">[</span><span class="n">var</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#023e8a&quot;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Boxplot de </span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/474cf242002a14a5bbed3cecfff4bc4533dc6100729618501b0cce3c1ec23489.png" src="_images/474cf242002a14a5bbed3cecfff4bc4533dc6100729618501b0cce3c1ec23489.png" />
+<img alt="_images/37c19a630a7ca01f92b808e704d8491322209ec74af58e749ef2ab571dbc4bc5.png" src="_images/37c19a630a7ca01f92b808e704d8491322209ec74af58e749ef2ab571dbc4bc5.png" />
 </div>
 </div>
 <p>Este código genera un boxplot para cada variable numérica del dataset. Las observaciones fuera del rango de los “bigotes” se consideran como potenciales outliers.</p>
@@ -2701,19 +2718,30 @@ Outliers detectados en ffiec_median_family_income utilizando el método IQR: 394
 <p>Es importante visualizar las distribuciones después del tratamiento de outliers para asegurarse de que las estrategias aplicadas no distorsionen significativamente los datos.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NumVars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;income&#39;</span><span class="p">,</span> <span class="s1">&#39;loan_amount&#39;</span><span class="p">,</span> <span class="s1">&#39;ffiec_median_family_income&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">var</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">NumVars</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span> 
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">Dataset</span><span class="p">[</span><span class="n">var</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>  
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución de </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1"> después del tratamiento&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">Dataset</span><span class="p">[</span><span class="n">var</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#0096c7&#39;</span><span class="p">)</span>  
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distribución después del tratamiento&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frecuencia&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/86db30bedd93de35bf7bf8831466c3c265b9b689be38fe43038bfe877c5fb40b.png" src="_images/86db30bedd93de35bf7bf8831466c3c265b9b689be38fe43038bfe877c5fb40b.png" />
+<img alt="_images/b39a02a67cfe1d122f854e475a67ccdee096c65127f7664bff7d13c5707d9b46.png" src="_images/b39a02a67cfe1d122f854e475a67ccdee096c65127f7664bff7d13c5707d9b46.png" />
 </div>
 </div>
 <p>La gráfica muestra la distribución de tres variables numéricas (<code class="docutils literal notranslate"><span class="pre">income</span></code>, <code class="docutils literal notranslate"><span class="pre">loan_amount</span></code> y <code class="docutils literal notranslate"><span class="pre">ffiec_median_family_income</span></code>) después del tratamiento de outliers. A continuación, se presenta una interpretación detallada de cada una:</p>
@@ -2731,6 +2759,19 @@ Outliers detectados en ffiec_median_family_income utilizando el método IQR: 394
 <section id="variable-respuesta">
 <h3><strong>Variable Respuesta</strong><a class="headerlink" href="#variable-respuesta" title="Link to this heading">#</a></h3>
 <p>La variable de respuesta en este análisis es action_taken, que indica la decisión tomada sobre el crédito hipotecario. Esta variable está codificada de tal manera que el valor 1 representa la aceptación del crédito, mientras que el valor 0 denota la negación del mismo. Comprender la distribución de esta variable es crucial para evaluar el comportamiento de los modelos predictivos y para entender los factores que influyen en las decisiones de aprobación o rechazo. A continuación, se presenta un gráfico de barras que muestra el conteo de cada categoría de action_taken, proporcionando una visión general de la proporción de créditos aprobados y rechazados en el dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">to_proportions</span><span class="p">(</span> <span class="n">data</span><span class="p">,</span> <span class="n">cat_x</span><span class="p">,</span> <span class="n">cat_fill</span> <span class="p">):</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">cat_x</span><span class="p">,</span> <span class="n">cat_fill</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+    <span class="n">totals</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">cat_x</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">totals</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="s1">&#39;total_count&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">totals</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">cat_x</span><span class="p">)</span>
+    <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;proportion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">counts</span><span class="p">[</span><span class="s1">&#39;total_count&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="k">return</span> <span class="n">counts</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plotnine</span> <span class="kn">import</span> <span class="p">(</span>
@@ -2858,50 +2899,8 @@ Outliers detectados en ffiec_median_family_income utilizando el método IQR: 394
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">27</span><span class="p">],</span> <span class="n">line</span> <span class="mi">38</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">blue_palette</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">,</span> <span class="s1">&#39;#0096c7&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">bar_plot</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">ggplot</span><span class="p">(</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;factor(action_taken)&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;factor(lien_status)&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="o">+</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">position</span><span class="o">=</span><span class="s1">&#39;stack&#39;</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span>     <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="n">proportion_plot</span> <span class="o">=</span> <span class="p">(</span>
-<span class="ne">---&gt; </span><span class="mi">38</span>     <span class="n">ggplot</span><span class="p">(</span><span class="n">to_proportions</span><span class="p">(</span><span class="n">Dataset</span><span class="p">,</span> <span class="s1">&#39;action_taken&#39;</span><span class="p">,</span> <span class="s1">&#39;lien_status&#39;</span><span class="p">),</span> 
-<span class="g g-Whitespace">     </span><span class="mi">39</span>            <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;factor(action_taken)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;proportion&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;factor(lien_status)&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span>     <span class="o">+</span> <span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="o">=</span><span class="s1">&#39;identity&#39;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="s1">&#39;stack&#39;</span><span class="p">,</span> <span class="n">show_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span>     <span class="o">+</span> <span class="n">scale_fill_manual</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span>         <span class="n">values</span><span class="o">=</span><span class="n">blue_palette</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>         <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;First Lien&quot;</span><span class="p">,</span> <span class="s2">&quot;Subordinate Lien&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="o">+</span> <span class="n">labs</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span>         <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Proporción de acción contra estado de Lien&quot;</span><span class="p">,</span> 
-<span class="g g-Whitespace">     </span><span class="mi">47</span>         <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Decisión&quot;</span><span class="p">,</span> 
-<span class="g g-Whitespace">     </span><span class="mi">48</span>         <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Proporción&quot;</span><span class="p">,</span> 
-<span class="g g-Whitespace">     </span><span class="mi">49</span>         <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;Estado&#39;</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span>     <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="o">+</span> <span class="n">theme_minimal</span><span class="p">()</span>  
-<span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="o">+</span> <span class="n">theme</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>         <span class="n">figure_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>  
-<span class="g g-Whitespace">     </span><span class="mi">54</span>         <span class="n">plot_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span>  
-<span class="g g-Whitespace">     </span><span class="mi">55</span>         <span class="n">axis_title_x</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span>  
-<span class="g g-Whitespace">     </span><span class="mi">56</span>         <span class="n">axis_title_y</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span> 
-<span class="g g-Whitespace">     </span><span class="mi">57</span>         <span class="n">axis_text</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">),</span>  
-<span class="g g-Whitespace">     </span><span class="mi">58</span>         <span class="n">legend_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span> 
-<span class="g g-Whitespace">     </span><span class="mi">59</span>         <span class="n">legend_position</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> 
-<span class="g g-Whitespace">     </span><span class="mi">60</span>         <span class="n">legend_background</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>  
-<span class="g g-Whitespace">     </span><span class="mi">61</span>         <span class="n">legend_box_margin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span>         <span class="n">legend_box</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span>  
-<span class="g g-Whitespace">     </span><span class="mi">63</span>     <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">66</span> <span class="n">bar_plot</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span> <span class="n">proportion_plot</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;to_proportions&#39; is not defined
-</pre></div>
-</div>
+<img alt="_images/cbaada7149774bdbdf220322fab878070667063d52ef47c52d413784294a7734.png" src="_images/cbaada7149774bdbdf220322fab878070667063d52ef47c52d413784294a7734.png" />
+<img alt="_images/5419f15fe0b000b64f75fd213b9a2c9aeba3189dcb467c1ad8fe2105b92125a3.png" src="_images/5419f15fe0b000b64f75fd213b9a2c9aeba3189dcb467c1ad8fe2105b92125a3.png" />
 </div>
 </div>
 <p>Los dos gráficos presentados ofrecen una perspectiva complementaria sobre la relación entre la acción tomada (<code class="docutils literal notranslate"><span class="pre">action_taken</span></code>) y el estado del lien (<code class="docutils literal notranslate"><span class="pre">lien_status</span></code>). El primer gráfico de barras muestra el conteo de aplicaciones de crédito hipotecario que fueron aprobadas o denegadas, segmentadas por el tipo de lien (<code class="docutils literal notranslate"><span class="pre">First</span> <span class="pre">Lien</span></code> o <code class="docutils literal notranslate"><span class="pre">Subordinate</span> <span class="pre">Lien</span></code>). Es evidente que la mayoría de las aprobaciones y denegaciones están asociadas con el <code class="docutils literal notranslate"><span class="pre">First</span> <span class="pre">Lien</span></code>, aunque el <code class="docutils literal notranslate"><span class="pre">Subordinate</span> <span class="pre">Lien</span></code> también tiene presencia, especialmente en las aplicaciones denegadas.</p>
@@ -3358,7 +3357,7 @@ Outliers detectados en ffiec_median_family_income utilizando el método IQR: 394
 </div>
 </div>
 <p>En el primer gráfico, que es un diagrama de cajas, se observa la distribución del monto del préstamo en función de la decisión de aprobación del crédito. Se puede notar que los montos aprobados tienden a ser más altos en comparación con los montos denegados. Los préstamos aprobados presentan un rango intercuartílico más amplio y una mediana más alta, lo cual indica que el rango de los montos aprobados es mayor. Además, hay presencia de algunos valores atípicos en ambos casos, sugiriendo la existencia de préstamos inusualmente altos.</p>
-<p>El segundo gráfico muestra la distribución de la variable del monto del préstamo a través de un histograma. La mayoría de los préstamos se concentran en montos menores a los <span class="math notranslate nohighlight">\(300,000, con un pico significativo alrededor de los \)</span>200,000. Esta distribución es sesgada a la derecha, lo que implica que, aunque la mayoría de los préstamos se encuentran en rangos bajos a moderados, hay una cantidad considerable de préstamos con montos mucho más altos, lo que podría influir en el análisis de riesgo de crédito.</p>
+<p>El segundo gráfico muestra la distribución de la variable del monto del préstamo a través de un histograma. La mayoría de los préstamos se concentran en montos menores a los $300,000, con un pico significativo alrededor de los $200,000. Esta distribución es sesgada a la derecha, lo que implica que, aunque la mayoría de los préstamos se encuentran en rangos bajos a moderados, hay una cantidad considerable de préstamos con montos mucho más altos, lo que podría influir en el análisis de riesgo de crédito.</p>
 </section>
 <section id="variable-income">
 <h5><strong>Variable Income</strong><a class="headerlink" href="#variable-income" title="Link to this heading">#</a></h5>
@@ -3366,6 +3365,9 @@ Outliers detectados en ffiec_median_family_income utilizando el método IQR: 394
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plotnine</span> <span class="kn">import</span> <span class="n">geom_histogram</span>
+
+<span class="n">blue_palette_income</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">,</span> <span class="s1">&#39;#0096c7&#39;</span><span class="p">]</span>
+
 
 <span class="n">histogram_income</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ggplot</span><span class="p">(</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;income&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;factor(action_taken)&#39;</span><span class="p">))</span>
@@ -3382,13 +3384,13 @@ Outliers detectados en ffiec_median_family_income utilizando el método IQR: 394
     <span class="p">)</span>
     <span class="o">+</span> <span class="n">theme_minimal</span><span class="p">()</span>
     <span class="o">+</span> <span class="n">theme</span><span class="p">(</span>
-        <span class="n">figure_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>  <span class="c1"># Ajustar el tamaño del gráfico</span>
+        <span class="n">figure_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>  
         <span class="n">plot_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span>
         <span class="n">axis_title_x</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span>
         <span class="n">axis_title_y</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span>
         <span class="n">axis_text</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">),</span>
         <span class="n">legend_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span>
-        <span class="n">legend_position</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>  <span class="c1"># Leyenda a la derecha</span>
+        <span class="n">legend_position</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>  
         <span class="n">legend_background</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
         <span class="n">legend_box_margin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
         <span class="n">legend_box</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span>
@@ -3440,7 +3442,7 @@ Outliers detectados en ffiec_median_family_income utilizando el método IQR: 394
 </div>
 </div>
 </div>
-<p>En los gráficos presentados se analiza la relación entre los ingresos del solicitante y la decisión del crédito. El primer gráfico, un diagrama de cajas, muestra que los ingresos medianos de los solicitantes con crédito aprobado (Loan Originated) son generalmente más altos que aquellos cuya solicitud fue denegada (Application Denied). Esto indica que a mayor ingreso, mayor probabilidad de aprobación del crédito.</p>
+<p>En los gráficos presentados se analiza la relación entre los ingresos del solicitante y la decisión del crédito. El primer gráfico, un diagrama de cajas, muestra que los ingresos medianos de los solicitantes con crédito aprobado (<code class="docutils literal notranslate"><span class="pre">Loan</span> <span class="pre">Originated</span></code>) son generalmente más altos que aquellos cuya solicitud fue denegada (<code class="docutils literal notranslate"><span class="pre">Application</span> <span class="pre">Denied</span></code>). Esto indica que a mayor ingreso, mayor probabilidad de aprobación del crédito.</p>
 <p>El segundo gráfico se ilustra la distribución de los ingresos para cada grupo de decisión. Se observa que los ingresos más bajos están más concentrados en las solicitudes denegadas, mientras que los ingresos más altos tienen una mayor proporción de aprobaciones. Esto reafirma la tendencia observada en el primer gráfico de que los ingresos influyen significativamente en la decisión de aprobación del crédito.</p>
 </section>
 <section id="variable-ffiec-family-income">
@@ -3452,10 +3454,8 @@ Outliers detectados en ffiec_median_family_income utilizando el método IQR: 394
     <span class="n">ggplot</span><span class="p">,</span> <span class="n">aes</span><span class="p">,</span> <span class="n">geom_boxplot</span><span class="p">,</span> <span class="n">scale_fill_manual</span><span class="p">,</span> <span class="n">labs</span><span class="p">,</span> <span class="n">theme_minimal</span><span class="p">,</span> <span class="n">theme</span><span class="p">,</span> <span class="n">element_text</span>
 <span class="p">)</span>
 
-<span class="c1"># Definir la paleta de colores en tonos de azul para el gráfico</span>
 <span class="n">blue_palette_median_income</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">,</span> <span class="s1">&#39;#0096c7&#39;</span><span class="p">]</span>
 
-<span class="c1"># Gráfico mejorado de caja para ingresos contra la mediana del sector</span>
 <span class="n">box_plot_median_income</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ggplot</span><span class="p">(</span><span class="n">Dataset</span><span class="p">,</span> <span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;factor(action_taken)&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;ffiec_median_family_income&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;factor(action_taken)&#39;</span><span class="p">))</span>
     <span class="o">+</span> <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">show_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
@@ -3469,22 +3469,21 @@ Outliers detectados en ffiec_median_family_income utilizando el método IQR: 394
         <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Ingresos&#39;</span><span class="p">,</span> 
         <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;Decisión&#39;</span>
     <span class="p">)</span>
-    <span class="o">+</span> <span class="n">theme_minimal</span><span class="p">()</span>  <span class="c1"># Tema sin fondo con estilo limpio</span>
+    <span class="o">+</span> <span class="n">theme_minimal</span><span class="p">()</span>  
     <span class="o">+</span> <span class="n">theme</span><span class="p">(</span>
-        <span class="n">figure_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>  <span class="c1"># Ajustar el tamaño de la figura</span>
+        <span class="n">figure_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>  
         <span class="n">plot_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span>  
         <span class="n">axis_title_x</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span>  
         <span class="n">axis_title_y</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span> 
         <span class="n">axis_text</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#3B3B3B&#39;</span><span class="p">),</span>  
         <span class="n">legend_title</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#023e8a&#39;</span><span class="p">),</span> 
-        <span class="n">legend_position</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>  <span class="c1"># Leyenda a la derecha</span>
+        <span class="n">legend_position</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span>  
         <span class="n">legend_background</span><span class="o">=</span><span class="n">element_text</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>  
         <span class="n">legend_box_margin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-        <span class="n">legend_box</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span>  <span class="c1"># Leyenda en posición vertical al costado</span>
+        <span class="n">legend_box</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span> 
     <span class="p">)</span>
 <span class="p">)</span>
 
-<span class="c1"># Mostrar el gráfico</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">box_plot_median_income</span><span class="p">)</span>
 </pre></div>
 </div>
