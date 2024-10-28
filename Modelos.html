@@ -1,0 +1,1083 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modelado de Datos &#8212; Modelos Predictivos para la Aprobación de Préstamos Hipotecarios en Texas</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Modelos';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Análisis Exploratorio de Datos" href="EDA.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="Resumen.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Modelos Predictivos para la Aprobación de Préstamos Hipotecarios en Texas - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Modelos Predictivos para la Aprobación de Préstamos Hipotecarios en Texas - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Resumen.html">
+                    Modelos Predictivos para la Aprobación de Préstamos Hipotecarios en Texas
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Introduccion.html"><strong>Introducción</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Objetivos.html"><strong>Objetivos</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Metodolog%C3%ADa.html"><strong>Metodología</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDA.html"><strong>Análisis Exploratorio de Datos</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Modelado de Datos</strong></a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FModelos.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Modelos.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modelado de Datos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Modelado de Datos</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion"><strong>Introducción</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-librerias-y-modelos"><strong>Importación de librerías y modelos</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-arbol-de-decision-dt"><strong>Modelos de Árbol de Decisión (DT)</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#carga-de-modelos-y-parametros"><strong>Carga de Modelos y Parámetros</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-los-modelos"><strong>Evaluación de los Modelos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-matriz-de-confusion-y-curva-roc"><strong>Visualización: Matriz de Confusión y Curva ROC</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-del-modelo-de-arbol-de-decision-dt"><strong>Evaluación del modelo de Árbol de Decisión (DT)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-del-modelo-de-arbol-de-decision-con-adaboost-dt-adaboost"><strong>Evaluación del modelo de Árbol de Decisión con AdaBoost (DT_AdaBoost)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-k-nearest-neighbors-k-nn"><strong>Modelos k-Nearest Neighbors (<span class="math notranslate nohighlight">\(k\)</span>-NN)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Carga de Modelos y Parámetros</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Evaluación de los Modelos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Visualización: Matriz de Confusión y Curva ROC</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-del-modelo-k-nn"><strong>Evaluación del modelo <span class="math notranslate nohighlight">\(k\)</span>-NN</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-final-de-modelos-y-evaluacion-general"><strong>Comparación Final de Modelos y Evaluación General</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-comparativa"><strong>Tabla comparativa</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-resumida-de-predicciones"><strong>Visualización Resumida de Predicciones</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>Conclusión</strong></a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modelado-de-datos">
+<h1><strong>Modelado de Datos</strong><a class="headerlink" href="#modelado-de-datos" title="Link to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduccion">
+<h1><strong>Introducción</strong><a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h1>
+<p>Para la sección de modelos de este proyecto, nos enfocaremos en evaluar y comparar el desempeño de distintas técnicas de aprendizaje supervisado. Tras un exhaustivo análisis exploratorio de datos, hemos preprocesado y preparado el conjunto de datos, garantizando su integridad y relevancia para el modelado. La implementación de estos modelos incluye Árboles de Decisión y k-Nearest Neighbors, tanto en sus versiones básicas como mejoradas mediante técnicas de ensamble. Cada modelo será evaluado de manera rigurosa, no solo con métricas cuantitativas como AUC y F1, sino también mediante representaciones visuales, como matrices de confusión y curvas ROC, que permiten una interpretación integral del rendimiento predictivo de cada algoritmo. Esta metodología nos permitirá identificar el modelo que mejor se ajusta a las necesidades del proyecto, maximizando la precisión y la robustez en la clasificación final.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="importacion-de-librerias-y-modelos">
+<h1><strong>Importación de librerías y modelos</strong><a class="headerlink" href="#importacion-de-librerias-y-modelos" title="Link to this heading">#</a></h1>
+<p>En esta fase, cargamos los modelos entrenados desde archivos en formato <code class="docutils literal notranslate"><span class="pre">.pkl</span></code> para su evaluación. Se utiliza un script que lee los nombres de los modelos desde un archivo (<code class="docutils literal notranslate"><span class="pre">model_paths.txt</span></code>) y los carga secuencialmente, proporcionando mensajes de éxito o errores específicos. Este enfoque permite gestionar y cargar automáticamente múltiples modelos para la siguiente etapa de análisis y comparación en el flujo del proyecto.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">models_testing</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pickle</span> <span class="kn">import</span> <span class="n">load</span><span class="p">,</span> <span class="n">UnpicklingError</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">sofmo</span><span class="se">\\</span><span class="s1">Desktop</span><span class="se">\\</span><span class="s1">EDA</span><span class="se">\\</span><span class="s1">jupyterbook</span><span class="se">\\</span><span class="s1">docs</span><span class="se">\\</span><span class="s1">Models</span><span class="se">\\</span><span class="s1">model_paths.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">model_filenames</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="n">models</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">model_name</span> <span class="ow">in</span> <span class="n">model_filenames</span><span class="p">:</span>
+    <span class="n">model_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">sofmo</span><span class="se">\\</span><span class="s1">Desktop</span><span class="se">\\</span><span class="s1">EDA</span><span class="se">\\</span><span class="s1">jupyterbook</span><span class="se">\\</span><span class="s1">docs</span><span class="se">\\</span><span class="s1">Models&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">.pkl&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Attempting to load model from: </span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">model_path</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">model_path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model_file</span><span class="p">:</span>
+                <span class="n">model</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
+                <span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully loaded model: </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="n">UnpicklingError</span><span class="p">,</span> <span class="ne">EOFError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">,</span> <span class="ne">Exception</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error loading </span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File </span><span class="si">{</span><span class="n">model_path</span><span class="si">}</span><span class="s2"> does not exist.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Attempting to load model from: C:\Users\sofmo\Desktop\EDA\jupyterbook\docs\Models\dt_trained.pkl
+Successfully loaded model: dt_trained
+Attempting to load model from: C:\Users\sofmo\Desktop\EDA\jupyterbook\docs\Models\dt_ada_trained.pkl
+Successfully loaded model: dt_ada_trained
+Attempting to load model from: C:\Users\sofmo\Desktop\EDA\jupyterbook\docs\Models\knn_trained.pkl
+Successfully loaded model: knn_trained
+Attempting to load model from: C:\Users\sofmo\Desktop\EDA\jupyterbook\docs\Models\knn_ada_trained.pkl
+Successfully loaded model: knn_ada_trained
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\sofmo\miniconda3\envs\EDA\lib\site-packages\sklearn\base.py:376: InconsistentVersionWarning: Trying to unpickle estimator LabelBinarizer from version 1.4.2 when using version 1.5.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+c:\Users\sofmo\miniconda3\envs\EDA\lib\site-packages\sklearn\base.py:376: InconsistentVersionWarning: Trying to unpickle estimator StandardScaler from version 1.4.2 when using version 1.5.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+c:\Users\sofmo\miniconda3\envs\EDA\lib\site-packages\sklearn\base.py:376: InconsistentVersionWarning: Trying to unpickle estimator DecisionTreeClassifier from version 1.4.2 when using version 1.5.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+c:\Users\sofmo\miniconda3\envs\EDA\lib\site-packages\sklearn\base.py:376: InconsistentVersionWarning: Trying to unpickle estimator Pipeline from version 1.4.2 when using version 1.5.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+c:\Users\sofmo\miniconda3\envs\EDA\lib\site-packages\sklearn\base.py:376: InconsistentVersionWarning: Trying to unpickle estimator NearestNeighbors from version 1.4.2 when using version 1.5.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+c:\Users\sofmo\miniconda3\envs\EDA\lib\site-packages\sklearn\base.py:376: InconsistentVersionWarning: Trying to unpickle estimator PCA from version 1.4.2 when using version 1.5.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+c:\Users\sofmo\miniconda3\envs\EDA\lib\site-packages\sklearn\base.py:376: InconsistentVersionWarning: Trying to unpickle estimator KNeighborsClassifier from version 1.4.2 when using version 1.5.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;Data/data.pkl&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="o">=</span> <span class="n">load</span><span class="p">(</span> <span class="n">file</span> <span class="p">)</span>
+    <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span> <span class="n">file</span> <span class="p">)</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">y_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verifica si &#39;knn&#39; y &#39;knn_ada&#39; están en la lista de modelos</span>
+<span class="k">for</span> <span class="n">model_info</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">model_info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;knn&#39;</span><span class="p">:</span>
+        <span class="n">knn</span> <span class="o">=</span> <span class="n">model_info</span>
+    <span class="k">elif</span> <span class="n">model_info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;knn_ada&#39;</span><span class="p">:</span>
+        <span class="n">knn_ada</span> <span class="o">=</span> <span class="n">model_info</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">model_info</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">model_info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dt&#39;</span><span class="p">:</span>
+        <span class="n">dt</span> <span class="o">=</span> <span class="n">model_info</span>
+    <span class="k">elif</span> <span class="n">model_info</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;dt_ada&#39;</span><span class="p">:</span>
+        <span class="n">dt_ada</span> <span class="o">=</span> <span class="n">model_info</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="modelos-de-arbol-de-decision-dt">
+<h1><strong>Modelos de Árbol de Decisión (DT)</strong><a class="headerlink" href="#modelos-de-arbol-de-decision-dt" title="Link to this heading">#</a></h1>
+<p>En esta sección, se presentan los modelos basados en Árboles de Decisión (DT), los cuales se utilizan por su simplicidad y capacidad interpretativa. Aquí se incluye tanto el modelo básico de Árbol de Decisión como la versión optimizada con AdaBoost (<code class="docutils literal notranslate"><span class="pre">dt</span></code> y <code class="docutils literal notranslate"><span class="pre">dt_ada</span></code>), que potencia el rendimiento al reducir errores en las predicciones. Cada modelo fue ajustado mediante una búsqueda de hiperparámetros y se cargaron los resultados relevantes, incluyendo el AUC y tiempo de procesamiento, para su posterior análisis y comparación.</p>
+<p>Los parámetros seleccionados, así como los tiempos de CPU y métricas de rendimiento, se almacenan en un DataFrame y se presentan de forma resumida. Esto permite evaluar el impacto del método de mejora AdaBoost en la precisión y robustez de los modelos.</p>
+<section id="carga-de-modelos-y-parametros">
+<h2><strong>Carga de Modelos y Parámetros</strong><a class="headerlink" href="#carga-de-modelos-y-parametros" title="Link to this heading">#</a></h2>
+<p>Los modelos basados en Árboles de Decisión proporcionan interpretabilidad y son efectivos para clasificaciones binarias. En esta primera etapa, cargamos dos modelos: el Árbol de Decisión base (DT) y una versión mejorada con AdaBoost (DT_Ada). A continuación, se presentan los parámetros optimizados para cada modelo, junto con la métrica AUC y el tiempo de CPU utilizado durante el ajuste.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_models</span> <span class="o">=</span> <span class="p">[</span><span class="n">dt</span><span class="p">,</span> <span class="n">dt_ada</span><span class="p">]</span>
+<span class="n">dt_parameters</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="n">model</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]}</span> <span class="o">|</span> <span class="n">model</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">best_params_</span> <span class="o">|</span> <span class="p">{</span><span class="s1">&#39;AUC&#39;</span><span class="p">:</span> <span class="n">model</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">best_score_</span><span class="p">,</span> <span class="s1">&#39;Tiempo de CPU&#39;</span><span class="p">:</span> <span class="n">model</span><span class="p">[</span><span class="s1">&#39;cpu_time&#39;</span><span class="p">]}</span>
+    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">dt_models</span>
+<span class="p">]</span>
+<span class="n">dt_parameters</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">dt_parameters</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">dt_parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>classifier__criterion</th>
+      <th>classifier__max_depth</th>
+      <th>AUC</th>
+      <th>Tiempo de CPU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>dt</td>
+      <td>entropy</td>
+      <td>8</td>
+      <td>0.788938</td>
+      <td>125.494143</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>dt_ada</td>
+      <td>gini</td>
+      <td>8</td>
+      <td>0.783710</td>
+      <td>610.739749</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>El modelo <code class="docutils literal notranslate"><span class="pre">dt</span></code> utiliza el criterio de entropía y alcanza un AUC de 0.7889 con un tiempo de CPU de 125.49 segundos. Por otro lado, <code class="docutils literal notranslate"><span class="pre">dt_ada</span></code> usa el criterio Gini, alcanzando un AUC de 0.7837, pero con un tiempo de CPU significativamente mayor de 610.74 segundos. Esto sugiere que el modelo básico es más eficiente computacionalmente que su contraparte adaptativa.</p>
+</section>
+<section id="evaluacion-de-los-modelos">
+<h2><strong>Evaluación de los Modelos</strong><a class="headerlink" href="#evaluacion-de-los-modelos" title="Link to this heading">#</a></h2>
+<p>Para obtener una visión más profunda de su desempeño, calculamos las métricas de precisión, recall, F1 y AUC de cada modelo de Árbol de Decisión. Estas métricas nos ayudarán a entender el rendimiento de cada modelo en términos de precisión y capacidad predictiva.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">evaluate_model</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">dt_models</span><span class="p">]</span>
+<span class="n">dt_metrics_df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">dt_metrics</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">dt_models</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">dt_metrics_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1</th>
+      <th>AUC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>dt</th>
+      <td>0.903656</td>
+      <td>0.820227</td>
+      <td>0.859923</td>
+      <td>0.792020</td>
+    </tr>
+    <tr>
+      <th>dt_ada</th>
+      <td>0.899353</td>
+      <td>0.835401</td>
+      <td>0.866198</td>
+      <td>0.789145</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>En la tabla se presentan las métricas de rendimiento de dos modelos de Árbol de Decisión: el modelo estándar (DT) y el modelo mejorado con AdaBoost (DT_Ada). Ambos modelos muestran resultados similares, pero el DT_Ada destaca con una mejor combinación de precisión y recall, reflejada en un puntaje F1 ligeramente superior (0.8662 frente a 0.8599). Sin embargo, el modelo DT presenta un AUC ligeramente más alto (0.7920), lo que sugiere un mejor equilibrio en la discriminación general. Esto indica que DT_Ada logra un mejor balance entre clasificación correcta y recuperación de casos positivos.</p>
+</section>
+<section id="visualizacion-matriz-de-confusion-y-curva-roc">
+<h2><strong>Visualización: Matriz de Confusión y Curva ROC</strong><a class="headerlink" href="#visualizacion-matriz-de-confusion-y-curva-roc" title="Link to this heading">#</a></h2>
+<p>Para cada modelo k-NN, generamos matrices de confusión y curvas ROC. Estas visualizaciones ofrecen una visión detallada del rendimiento de los modelos y su efectividad en la clasificación de las observaciones.</p>
+<section id="evaluacion-del-modelo-de-arbol-de-decision-dt">
+<h3><strong>Evaluación del modelo de Árbol de Decisión (DT)</strong><a class="headerlink" href="#evaluacion-del-modelo-de-arbol-de-decision-dt" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">dt</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">dt</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">dt</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">dt</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/35d448e00c3d48d80a5a2fc1443bfae0483849d3f515b59a79de488a3363bf96.png" src="_images/35d448e00c3d48d80a5a2fc1443bfae0483849d3f515b59a79de488a3363bf96.png" />
+<img alt="_images/adc2b56583bd347eadee1bafbd18b6521a12a309ef0e2d1a94ae3dc950e56738.png" src="_images/adc2b56583bd347eadee1bafbd18b6521a12a309ef0e2d1a94ae3dc950e56738.png" />
+</div>
+</div>
+<p>La matriz de confusión del modelo de Árbol de Decisión (DT) indica una alta precisión en la predicción de la clase positiva (82.02%) y una moderada en la clase negativa (64.55%), aunque muestra un margen de error que sugiere posibles mejoras en la precisión de la clase negativa. La curva ROC, con un AUC de 0.79, señala un rendimiento razonable en la discriminación de clases, y su umbral óptimo de 0.80 ofrece un equilibrio adecuado entre la sensibilidad y la especificidad del modelo, sugiriendo un rendimiento sólido en general.</p>
+</section>
+<section id="evaluacion-del-modelo-de-arbol-de-decision-con-adaboost-dt-adaboost">
+<h3><strong>Evaluación del modelo de Árbol de Decisión con AdaBoost (DT_AdaBoost)</strong><a class="headerlink" href="#evaluacion-del-modelo-de-arbol-de-decision-con-adaboost-dt-adaboost" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">dt_ada</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">dt_ada</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">dt_ada</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">dt_ada</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7fa3ab205c72e3bfaf91d27671ffe07b16e01444255d988c403a3fd3c4007557.png" src="_images/7fa3ab205c72e3bfaf91d27671ffe07b16e01444255d988c403a3fd3c4007557.png" />
+<img alt="_images/1ddf485819f91d1eafb5a7a7cd2a666cfb516f9c79e79bc1f256cb4f15ca954e.png" src="_images/1ddf485819f91d1eafb5a7a7cd2a666cfb516f9c79e79bc1f256cb4f15ca954e.png" />
+</div>
+</div>
+<p>La matriz de confusión del modelo <code class="docutils literal notranslate"><span class="pre">dt_ada</span></code> muestra que el modelo tiene una precisión aceptable al clasificar tanto positivos como negativos, con un 83.54% de los verdaderos positivos y un 62.10% de los verdaderos negativos clasificados correctamente. Sin embargo, también se observan falsos positivos (37.90%) y falsos negativos (16.46%). La curva ROC para <code class="docutils literal notranslate"><span class="pre">dt_ada</span></code> indica una buena capacidad de discriminación, con un AUC de 0.79. El umbral óptimo, marcado en la gráfica, maximiza el equilibrio entre sensibilidad y especificidad.</p>
+</section>
+</section>
+<section id="modelos-k-nearest-neighbors-k-nn">
+<h2><strong>Modelos k-Nearest Neighbors (<span class="math notranslate nohighlight">\(k\)</span>-NN)</strong><a class="headerlink" href="#modelos-k-nearest-neighbors-k-nn" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3><strong>Carga de Modelos y Parámetros</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>La técnica k-Nearest Neighbors se basa en la proximidad de observaciones. Aquí, evaluamos dos variantes: el modelo base k-NN y su versión optimizada mediante AdaBoost (k-NN_Ada). La tabla de parámetros ofrece un resumen de las configuraciones óptimas junto con las métricas de AUC y tiempos de CPU.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_models</span> <span class="o">=</span> <span class="p">[</span><span class="n">knn</span><span class="p">,</span> <span class="n">knn_ada</span><span class="p">]</span>
+<span class="n">knn_parameters</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;Nombre&#39;</span><span class="p">:</span> <span class="n">model</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]}</span> <span class="o">|</span> <span class="n">model</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">best_params_</span> <span class="o">|</span> <span class="p">{</span><span class="s1">&#39;AUC&#39;</span><span class="p">:</span> <span class="n">model</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">best_score_</span><span class="p">,</span> <span class="s1">&#39;Tiempo de CPU&#39;</span><span class="p">:</span> <span class="n">model</span><span class="p">[</span><span class="s1">&#39;cpu_time&#39;</span><span class="p">]}</span>
+    <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">knn_models</span>
+<span class="p">]</span>
+<span class="n">knn_parameters</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">knn_parameters</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">knn_parameters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Nombre</th>
+      <th>classifier__n_neighbors</th>
+      <th>classifier__weights</th>
+      <th>AUC</th>
+      <th>Tiempo de CPU</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>knn</td>
+      <td>183</td>
+      <td>uniform</td>
+      <td>0.793077</td>
+      <td>994.656473</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>knn_ada</td>
+      <td>231</td>
+      <td>uniform</td>
+      <td>0.784849</td>
+      <td>2533.746077</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>En esta tabla se presentan los resultados de los modelos K-Nearest Neighbors (KNN) y KNN con AdaBoost (KNN_Ada). El modelo KNN básico utiliza 183 vecinos y tiene un AUC de 0.793077, con un tiempo de CPU de aproximadamente 994.66 segundos. Por otro lado, el modelo KNN_Ada, optimizado con AdaBoost, incrementa el número de vecinos a 231 y muestra un AUC ligeramente inferior de 0.784849, aunque el tiempo de CPU aumenta significativamente a 2533.75 segundos. Esto sugiere que la incorporación de AdaBoost aumenta la complejidad y el tiempo de procesamiento sin mejorar el rendimiento del modelo en términos de AUC.</p>
+</section>
+<section id="id2">
+<h3><strong>Evaluación de los Modelos</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Evaluamos cada modelo k-NN utilizando las métricas de precisión, recall, F1 y AUC. La tabla resultante nos ayuda a comparar el rendimiento de los modelos k-NN con los modelos de Árbol de Decisión, permitiendo determinar cuál es más adecuado para el conjunto de datos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">evaluate_model</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">knn_models</span><span class="p">]</span>
+<span class="n">knn_metrics_df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">knn_metrics</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">knn_models</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">knn_metrics_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1</th>
+      <th>AUC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>knn</th>
+      <td>0.903972</td>
+      <td>0.823346</td>
+      <td>0.861777</td>
+      <td>0.793589</td>
+    </tr>
+    <tr>
+      <th>knn_ada</th>
+      <td>0.903871</td>
+      <td>0.800584</td>
+      <td>0.849098</td>
+      <td>0.784010</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>El modelo knn alcanzó un AUC de 0.793 con un tiempo de CPU de aproximadamente 995 segundos, mientras que knn_ada obtuvo un AUC ligeramente inferior (0.785) pero con un tiempo de CPU considerablemente mayor (2534 segundos). Aunque la optimización del modelo knn_ada no mejora el AUC y requiere significativamente más tiempo de procesamiento, sigue siendo comparable al modelo original en cuanto a rendimiento.</p>
+</section>
+<section id="id3">
+<h3><strong>Visualización: Matriz de Confusión y Curva ROC</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Para cada modelo k-NN, generamos matrices de confusión y curvas ROC. Estas visualizaciones ofrecen una visión detallada del rendimiento de los modelos y su efectividad en la clasificación de las observaciones.</p>
+</section>
+<section id="evaluacion-del-modelo-k-nn">
+<h3><strong>Evaluación del modelo <span class="math notranslate nohighlight">\(k\)</span>-NN</strong><a class="headerlink" href="#evaluacion-del-modelo-k-nn" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">knn</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">knn</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">knn</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">knn</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7fcf1de038ecfcf393e6bbc006ecd82deee48073d91f410ad43ed12cd7ad1bdc.png" src="_images/7fcf1de038ecfcf393e6bbc006ecd82deee48073d91f410ad43ed12cd7ad1bdc.png" />
+<img alt="_images/e1c99e773c608ad81f260625a4cca9e2566dbf8d4936e95fe201ef10c0e2c609.png" src="_images/e1c99e773c608ad81f260625a4cca9e2566dbf8d4936e95fe201ef10c0e2c609.png" />
+</div>
+</div>
+<p>La matriz de confusión para el modelo KNN muestra una buena precisión en la clasificación de ambas clases. El modelo logra identificar correctamente el 64.55% de los casos negativos y el 82.33% de los casos positivos, aunque presenta errores en ambas clases: 35.45% de falsos positivos y 17.67% de falsos negativos. La curva ROC, con un área bajo la curva (AUC) de 0.79, indica un buen rendimiento general del modelo, y el umbral óptimo seleccionado (0.80) equilibra de manera eficiente las tasas de verdaderos positivos y falsos positivos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">knn_ada</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">knn_ada</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+<span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">knn_ada</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">knn_ada</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/44b5737b0e0f8b75d612a72d126570760774901ec0450810a99ba1fc10d5ab2b.png" src="_images/44b5737b0e0f8b75d612a72d126570760774901ec0450810a99ba1fc10d5ab2b.png" />
+<img alt="_images/79ec416165929f49ff8fe64582b7bd2f2dd67e48fe603dd55358f08a6bac0cfa.png" src="_images/79ec416165929f49ff8fe64582b7bd2f2dd67e48fe603dd55358f08a6bac0cfa.png" />
+</div>
+</div>
+<p>Para el modelo K-Nearest Neighbors ajustado con AdaBoost (<code class="docutils literal notranslate"><span class="pre">knn_ada</span></code>), la matriz de confusión muestra una precisión moderada, con un 65.49% de verdaderos negativos y un 80.06% de verdaderos positivos. Sin embargo, la tasa de falsos negativos (19.94%) y falsos positivos (34.51%) es notable, lo cual sugiere áreas de mejora en la discriminación entre clases. En la curva ROC, el área bajo la curva (AUC) es de 0.78, indicando una capacidad de clasificación aceptable. El umbral óptimo se sitúa en 0.48, destacándose en la curva como el punto de mejor equilibrio entre sensibilidad y especificidad.</p>
+</section>
+</section>
+<section id="comparacion-final-de-modelos-y-evaluacion-general">
+<h2><strong>Comparación Final de Modelos y Evaluación General</strong><a class="headerlink" href="#comparacion-final-de-modelos-y-evaluacion-general" title="Link to this heading">#</a></h2>
+<p>En esta sección de comparación, consolidamos los resultados de ambos tipos de modelos (DT y k-NN). La tabla comparativa de métricas ayuda a identificar el modelo óptimo y proporciona una visión clara del rendimiento general de los modelos.</p>
+<section id="tabla-comparativa">
+<h3><strong>Tabla comparativa</strong><a class="headerlink" href="#tabla-comparativa" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AllMetrics</span> <span class="o">=</span> <span class="n">dt_metrics</span> <span class="o">+</span> <span class="n">knn_metrics</span>
+<span class="n">ComparisonDf</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">AllMetrics</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">dt_models</span> <span class="o">+</span> <span class="n">knn_models</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ComparisonDf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Precision</th>
+      <th>Recall</th>
+      <th>F1</th>
+      <th>AUC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>dt</th>
+      <td>0.903656</td>
+      <td>0.820227</td>
+      <td>0.859923</td>
+      <td>0.792020</td>
+    </tr>
+    <tr>
+      <th>dt_ada</th>
+      <td>0.899353</td>
+      <td>0.835401</td>
+      <td>0.866198</td>
+      <td>0.789145</td>
+    </tr>
+    <tr>
+      <th>knn</th>
+      <td>0.903972</td>
+      <td>0.823346</td>
+      <td>0.861777</td>
+      <td>0.793589</td>
+    </tr>
+    <tr>
+      <th>knn_ada</th>
+      <td>0.903871</td>
+      <td>0.800584</td>
+      <td>0.849098</td>
+      <td>0.784010</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>La tabla comparativa de métricas muestra el desempeño de cuatro modelos (DT, DT con AdaBoost, KNN y KNN con AdaBoost) en términos de Precisión, Recall, F1 y AUC. El modelo de KNN estándar obtuvo la mayor puntuación en F1 (0.8618) y AUC (0.7936), destacándose como el modelo con mejor equilibrio entre precisión y sensibilidad. En cambio, el modelo DT estándar mostró un valor de Recall significativo (0.8202), lo que indica su capacidad para capturar correctamente las clases positivas. Aunque los modelos ajustados con AdaBoost mejoran levemente el Recall, no superan en general al KNN estándar en F1 y AUC, sugiriendo que este último logra un mejor balance general en las métricas de clasificación.</p>
+</section>
+<section id="visualizacion-resumida-de-predicciones">
+<h3><strong>Visualización Resumida de Predicciones</strong><a class="headerlink" href="#visualizacion-resumida-de-predicciones" title="Link to this heading">#</a></h3>
+<p>Como visualización final, se muestra un gráfico resumido que representa la capacidad de cada modelo para clasificar correctamente las observaciones. Esto proporciona una visión integral de la efectividad y la precisión de los modelos en su conjunto.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_predictions</span><span class="p">([</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">dt_models</span> <span class="o">+</span> <span class="n">knn_models</span><span class="p">],</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="p">[</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">dt_models</span> <span class="o">+</span> <span class="n">knn_models</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/31dbca6ae40bf60c4eaab0a3fc94d27ec4e62dfcbf14937754bbfe7f447edef5.png" src="_images/31dbca6ae40bf60c4eaab0a3fc94d27ec4e62dfcbf14937754bbfe7f447edef5.png" />
+</div>
+</div>
+<p>En el gráfico se muestran las predicciones de los modelos para las clases de observaciones “True 1s” y “True 0s”. En la parte superior, se observa la predicción de los modelos sobre las observaciones que realmente son “1”. A pesar de algunas diferencias, los modelos muestran consistencia en la mayoría de las observaciones, aunque algunos modelos predicen incorrectamente ciertos casos. En la parte inferior, para las observaciones “True 0s”, se evidencia un comportamiento similar. Esta visualización permite identificar patrones en los aciertos y errores de cada modelo, facilitando un análisis más detallado de su desempeño.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1><strong>Conclusión</strong><a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
+<p>En conclusión, el análisis de los modelos de Árbol de Decisión y K-Nearest Neighbors (KNN) ofrece una visión clara de su rendimiento y precisión en la clasificación de los datos. Los modelos de Árbol de Decisión, tanto el modelo base como el que utiliza AdaBoost, muestran un equilibrio entre precisión y eficiencia en el uso de recursos. Sin embargo, los modelos KNN destacan por su capacidad para capturar la complejidad de los datos a expensas de tiempos de CPU más altos. En términos de métricas, todos los modelos lograron AUC cercanos, indicando buena discriminación en la clasificación. La visualización de predicciones demuestra que los modelos son consistentes, aunque algunos patrones de error revelan áreas para mejorar la precisión.</p>
+<p>En general, la selección del modelo dependerá del equilibrio deseado entre precisión y eficiencia computacional, destacando el Árbol de Decisión como opción para una ejecución más rápida y KNN cuando se busca capturar mayor detalle en las predicciones.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="EDA.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Análisis Exploratorio de Datos</strong></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Modelado de Datos</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion"><strong>Introducción</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#importacion-de-librerias-y-modelos"><strong>Importación de librerías y modelos</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-de-arbol-de-decision-dt"><strong>Modelos de Árbol de Decisión (DT)</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#carga-de-modelos-y-parametros"><strong>Carga de Modelos y Parámetros</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-de-los-modelos"><strong>Evaluación de los Modelos</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-matriz-de-confusion-y-curva-roc"><strong>Visualización: Matriz de Confusión y Curva ROC</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-del-modelo-de-arbol-de-decision-dt"><strong>Evaluación del modelo de Árbol de Decisión (DT)</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-del-modelo-de-arbol-de-decision-con-adaboost-dt-adaboost"><strong>Evaluación del modelo de Árbol de Decisión con AdaBoost (DT_AdaBoost)</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelos-k-nearest-neighbors-k-nn"><strong>Modelos k-Nearest Neighbors (<span class="math notranslate nohighlight">\(k\)</span>-NN)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Carga de Modelos y Parámetros</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Evaluación de los Modelos</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Visualización: Matriz de Confusión y Curva ROC</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion-del-modelo-k-nn"><strong>Evaluación del modelo <span class="math notranslate nohighlight">\(k\)</span>-NN</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparacion-final-de-modelos-y-evaluacion-general"><strong>Comparación Final de Modelos y Evaluación General</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tabla-comparativa"><strong>Tabla comparativa</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizacion-resumida-de-predicciones"><strong>Visualización Resumida de Predicciones</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>Conclusión</strong></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Zharick Molina y Ricardo Watts
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
